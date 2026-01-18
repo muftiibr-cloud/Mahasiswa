@@ -1,6 +1,6 @@
 <?php
-// index.php
-include("koneksimh.php");
+// indexdf.php
+include("koneksidf.php");
 
 // Query data mahasiswa
 $query = "SELECT m.*, p.nama_prodi, p.jenjang 
@@ -8,7 +8,7 @@ $query = "SELECT m.*, p.nama_prodi, p.jenjang
           LEFT JOIN prodi p ON m.prodi_id = p.id 
           ORDER BY m.nim ASC";
 
-$result = $koneksimh->query($query);
+$result = $koneksidf->query($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +35,7 @@ $result = $koneksimh->query($query);
         <?php endif; ?>
 
         <div class="text-end mb-3">
-            <a href="createmh.php" class="btn btn-primary">Tambah Data</a>
+            <a href="createdf.php" class="btn btn-primary">Tambah Data</a>
         </div>
 
         <table class="table table-bordered">
@@ -66,8 +66,8 @@ $result = $koneksimh->query($query);
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="edit.php?nim=<?php echo $row['nim']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="hapus.php?nim=<?php echo $row['nim']; ?>" class="btn btn-danger btn-sm" 
+                                <a href="editdf.php?nim=<?php echo $row['nim']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="hapusdf.php?nim=<?php echo $row['nim']; ?>" class="btn btn-danger btn-sm" 
                                    onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                             </td>
                         </tr>

@@ -1,10 +1,10 @@
 <?php
-// createmh.php
-include('koneksimh.php');
+// createdf.php
+include('koneksidf.php');
 
 // Ambil data prodi untuk dropdown
 $prodi_query = "SELECT id, nama_prodi, jenjang FROM prodi ORDER BY nama_prodi";
-$prodi_result = $koneksimh->query($prodi_query);
+$prodi_result = $koneksidf->query($prodi_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@ $prodi_result = $koneksimh->query($prodi_query);
             </div>
         <?php endif; ?>
         
-        <form method="POST" action="gbprosesmh.php">
+        <form method="POST" action="gbprosesmhdf.php">
             <div class="mb-3">
                 <label for="nim" class="form-label">NIM</label>
                 <input type="text" name="nim" class="form-control" id="nim" maxlength="10" required>
@@ -63,7 +63,7 @@ $prodi_result = $koneksimh->query($prodi_query);
             
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
             <button type="reset" class="btn btn-secondary">Reset</button>
-            <a href="indexmh.php" class="btn btn-warning">Kembali</a>
+            <a href="indexdf.php" class="btn btn-warning">Kembali</a>
         </form>
     </div>
 </body>

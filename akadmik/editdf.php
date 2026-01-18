@@ -1,9 +1,9 @@
 <?php
-// edit.php
-include("koneksimh.php");
+// editdf.php
+include("koneksidf.php");
 
 if (!isset($_GET['nim'])) {
-    header("Location: indexmh.php");
+    header("Location: indexdf.php");
     exit();
 }
 
@@ -13,10 +13,10 @@ $nim = $_GET['nim'];
 $query = "SELECT m.*, p.nama_prodi FROM mahasiswa m 
           LEFT JOIN prodi p ON m.prodi_id = p.id 
           WHERE m.nim = '$nim'";
-$result = $koneksimh->query($query);
+$result = $koneksidf->query($query);
 
 if ($result->num_rows == 0) {
-    header("Location: indexmh.php");
+    header("Location: indexdf.php");
     exit();
 }
 
@@ -24,7 +24,7 @@ $mahasiswa = $result->fetch_assoc();
 
 // Ambil data prodi
 $prodi_query = "SELECT id, nama_prodi, jenjang FROM prodi ORDER BY nama_prodi";
-$prodi_result = $koneksimh->query($prodi_query);
+$prodi_result = $koneksidf->query($prodi_query);
 
 // Proses update
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   prodi_id = '$prodi_id'
                   WHERE nim = '$nim'";
     
-    if ($koneksimh->query($update_sql)) {
-        header("Location: index.php?success=Data berhasil diperbarui!");
+    if ($koneksidf->query($update_sql)) {
+        header("Location: indexdf.php?success=Data berhasil diperbarui!");
         exit();
     }
 }
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="index.php" class="btn btn-secondary">Batal</a>
+            <a href="indexdf.php" class="btn btn-secondary">Batal</a>
         </form>
     </div>
 </body>
